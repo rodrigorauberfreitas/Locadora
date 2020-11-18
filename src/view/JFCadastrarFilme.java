@@ -141,7 +141,7 @@ public class JFCadastrarFilme extends JFrame {
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
 				Filme f = new Filme();
 				FilmeDAO dao = new FilmeDAO();
 				f.setTitulo(txtTitulo.getText());
