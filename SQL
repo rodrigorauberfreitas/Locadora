@@ -1,0 +1,33 @@
+CREATE DATABASE IF NOT EXISTS `locadora` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `locadora`;
+
+
+
+--
+-- Estrutura da tabela `cliente`
+--
+
+CREATE TABLE IF NOT EXISTS `cliente` (
+  `idCliente` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(30) DEFAULT NULL,
+  `idade` int(10) DEFAULT NULL,
+  `email` varchar(200) DEFAULT NULL,
+  `estadocivil` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`idCliente`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+
+--
+-- Estrutura da tabela `filme`
+--
+
+CREATE TABLE IF NOT EXISTS `filme` (
+  `idFilme` int(11) NOT NULL AUTO_INCREMENT,
+  `titulo` varchar(50) DEFAULT NULL,
+  `tempo` int(11) DEFAULT NULL,
+  `imagem3d` tinyint(4) DEFAULT NULL,
+  `dublado` tinyint(4) DEFAULT NULL,
+  `sinopse` varchar(500) DEFAULT NULL,
+  `categoria` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`idFilme`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
