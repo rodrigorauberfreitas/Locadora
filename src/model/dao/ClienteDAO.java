@@ -107,7 +107,7 @@ public class ClienteDAO {
 			stmt.setInt(2, c.getIdade());
 			stmt.setString(3, c.getEmail());
 			stmt.setString(4, c.getEstadocivil());
-			stmt.setInt(7, c.getIdCliente());
+			stmt.setInt(5, c.getIdCliente());
 			
 			stmt.executeUpdate();
 			JOptionPane.showMessageDialog(null, "Cliente atualizado com sucesso!");

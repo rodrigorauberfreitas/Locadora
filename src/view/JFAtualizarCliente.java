@@ -102,6 +102,10 @@ public class JFAtualizarCliente extends JFrame {
 		spIdade.setBounds(10, 230, 46, 31);
 		contentPane.add(spIdade);
 		
+		txtEstadocivil = new JTextField();
+		txtEstadocivil.setBounds(10, 180, 414, 20);
+		contentPane.add(txtEstadocivil);
+		txtEstadocivil.setColumns(10);
 		
 		lblId.setText(String.valueOf(c.getIdCliente()));
 		txtNome.setText(c.getNome());
@@ -110,13 +114,24 @@ public class JFAtualizarCliente extends JFrame {
 		spIdade.setValue(c.getIdade());
 		
 		JButton btnAlterar = new JButton("Alterar");
+		btnAlterar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Cliente c = new Cliente();
+				ClienteDAO dao = new ClienteDAO();
+				
+				c.setIdCliente(Integer.parseInt(lblId.getText()));
+				c.setNome(txtNome.getText());
+				c.setEmail(txtEmail.getText());
+				c.setEstadocivil(txtEstadocivil.getText());
+				c.setIdade(Integer.parseInt(spIdade.getValue().toString()));
+				dao.update(c);
+			}
+		});
+		
 		btnAlterar.setBounds(320, 234, 104, 23);
 		contentPane.add(btnAlterar);
 		
-		txtEstadocivil = new JTextField();
-		txtEstadocivil.setBounds(10, 180, 414, 20);
-		contentPane.add(txtEstadocivil);
-		txtEstadocivil.setColumns(10);
+		
 		
 
 		
