@@ -7,7 +7,12 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -78,6 +83,20 @@ public class JFListarClientes extends JFrame {
 		contentPane.add(btnCadastrar);
 		
 		JButton btnAlterar = new JButton("Alterar Cliente");
+		btnAlterar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(jtCliente.getSelectedRow()!= -1) {
+					JFAtualizarCliente ac = new JFAtualizarCliente(
+							(int)jtCliente.getValueAt(jtCliente.getSelectedRow(), 0));
+					ac.setVisible(true);
+				}else {
+					JOptionPane.showMessageDialog(null, "Selecione um cliente!");
+				}
+				readJTable();
+			}
+		});
+		
 		btnAlterar.setBounds(216, 256, 115, 23);
 		contentPane.add(btnAlterar);
 		
