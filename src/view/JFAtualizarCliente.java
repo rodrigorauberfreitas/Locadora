@@ -49,7 +49,7 @@ public class JFAtualizarCliente extends JFrame {
 	 * Create the frame.
 	 */
 	public JFAtualizarCliente(int id) {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -125,11 +125,33 @@ public class JFAtualizarCliente extends JFrame {
 				c.setEstadocivil(txtEstadocivil.getText());
 				c.setIdade(Integer.parseInt(spIdade.getValue().toString()));
 				dao.update(c);
+				dispose();
 			}
 		});
 		
 		btnAlterar.setBounds(320, 234, 104, 23);
 		contentPane.add(btnAlterar);
+		
+		JButton btnLimpar = new JButton("Limpar");
+		btnLimpar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				txtNome.setText(null);
+				txtEmail.setText(null);
+				txtEstadocivil.setText(null);
+				spIdade.setValue(0);
+			}
+		});
+		btnLimpar.setBounds(221, 234, 89, 23);
+		contentPane.add(btnLimpar);
+		
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		btnCancelar.setBounds(122, 234, 89, 23);
+		contentPane.add(btnCancelar);
 		
 		
 		

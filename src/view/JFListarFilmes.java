@@ -12,6 +12,8 @@ import javax.swing.JOptionPane;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowFocusListener;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -47,9 +49,19 @@ public class JFListarFilmes extends JFrame {
 	 * Create the frame.
 	 */
 	public JFListarFilmes() {
+		addWindowFocusListener(new WindowFocusListener() {
+			public void windowGainedFocus(WindowEvent e) {
+				readJTable();
+			}
+			public void windowLostFocus (WindowEvent e) {
+				
+			}
+		});
+		
+		
 		setTitle("Listar Filmes");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 508, 407);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setBounds(100, 100, 567, 391);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -77,6 +89,12 @@ public class JFListarFilmes extends JFrame {
 		scrollPane.setViewportView(jtFilme);
 		
 		JButton btnCadastrar = new JButton("Cadastrar Filme");
+		btnCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFCadastrarFilme cf = new JFCadastrarFilme();
+				cf.setVisible(true);
+			}
+		});
 		btnCadastrar.setBounds(10, 315, 141, 23);
 		contentPane.add(btnCadastrar);
 		
@@ -117,8 +135,17 @@ public class JFListarFilmes extends JFrame {
 				readJTable();
 			}
 		});
-		btnExcluir.setBounds(295, 315, 116, 23);
+		btnExcluir.setBounds(278, 315, 116, 23);
 		contentPane.add(btnExcluir);
+		
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		btnCancelar.setBounds(404, 315, 89, 23);
+		contentPane.add(btnCancelar);
 	
 		readJTable();
 	}

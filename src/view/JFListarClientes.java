@@ -12,6 +12,8 @@ import javax.swing.JOptionPane;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowFocusListener;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -49,9 +51,17 @@ public class JFListarClientes extends JFrame {
 	 * Create the frame.
 	 */
 	public JFListarClientes() {
+		addWindowFocusListener(new WindowFocusListener() {
+			public void windowGainedFocus(WindowEvent e) {
+				readJTable();
+			}
+			public void windowLostFocus (WindowEvent e) {
+				
+			}
+		});
 		setTitle("Listar Clientes");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 520, 343);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setBounds(100, 100, 586, 333);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -79,6 +89,12 @@ public class JFListarClientes extends JFrame {
 		scrollPane.setViewportView(jtCliente);
 		
 		JButton btnCadastrar = new JButton("Cadastrar Cliente");
+		btnCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFCadastrarCliente cc = new JFCadastrarCliente();
+				cc.setVisible(true);
+			}
+		});
 		btnCadastrar.setBounds(10, 256, 163, 23);
 		contentPane.add(btnCadastrar);
 		
@@ -97,7 +113,7 @@ public class JFListarClientes extends JFrame {
 			}
 		});
 		
-		btnAlterar.setBounds(216, 256, 115, 23);
+		btnAlterar.setBounds(183, 256, 115, 23);
 		contentPane.add(btnAlterar);
 		
 		JButton btnExcluir = new JButton("Excluir Cliente");
@@ -119,8 +135,17 @@ public class JFListarClientes extends JFrame {
 				readJTable();
 			}
 		});
-		btnExcluir.setBounds(364, 256, 116, 23);
+		btnExcluir.setBounds(308, 256, 116, 23);
 		contentPane.add(btnExcluir);
+		
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		btnCancelar.setBounds(434, 256, 89, 23);
+		contentPane.add(btnCancelar);
 		
 		readJTable();
 	}

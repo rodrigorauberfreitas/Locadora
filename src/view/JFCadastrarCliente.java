@@ -49,7 +49,7 @@ public class JFCadastrarCliente extends JFrame {
 	 * Create the frame.
 	 */
 	public JFCadastrarCliente() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -101,6 +101,7 @@ public class JFCadastrarCliente extends JFrame {
 				c.setEstadocivil(txtEstadocivil.getText());
 				c.setIdade(Integer.parseInt(spIdade.getValue().toString()));
 				dao.create(c);
+				dispose();
 				
 			}
 		});
@@ -111,6 +112,27 @@ public class JFCadastrarCliente extends JFrame {
 		txtEstadocivil.setBounds(10, 180, 414, 20);
 		contentPane.add(txtEstadocivil);
 		txtEstadocivil.setColumns(10);
+		
+		JButton btnLimpar = new JButton("Limpar");
+		btnLimpar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				txtNome.setText(null);
+				txtEmail.setText(null);
+				txtEstadocivil.setText(null);
+				spIdade.setValue(0);
+			}
+		});
+		btnLimpar.setBounds(205, 234, 89, 23);
+		contentPane.add(btnLimpar);
+		
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		btnCancelar.setBounds(97, 234, 89, 23);
+		contentPane.add(btnCancelar);
 		
 		
 	}
