@@ -113,7 +113,7 @@ public class JFPrincipal extends JFrame {
 		
 		
 		
-		
+		 
 		
 		
 		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Cadastrar Filme...");

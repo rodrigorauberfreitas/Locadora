@@ -23,7 +23,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class JFCadastrarFilme extends JFrame {
-
+ 
 	private JPanel contentPane;
 	private JTextField txtTitulo;
 	private JTextField txtCategoria;
